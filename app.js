@@ -1,6 +1,20 @@
+// display card
+const displayCardLocalStorag=()=>{
+    const card=getCard()
+    for(const product in card){
+    console.log(product)
+    addIteams(product)
+
+    }
+
+}
+// input event
 const addBtn=()=>{
     const input=document.getElementById('inputCard')
     const name=input.value
+    if(!name){
+        return
+    }
 
     addIteams(name)
     productToCard(name)
@@ -19,7 +33,7 @@ const addIteams=(name)=>{
 // get local api
 const getCard=()=>{
     const card=localStorage.getItem('card')
-    console.log(card)
+    // console.log(card)
     let newObject
     if(card){
         newObject=JSON.parse(card) 
@@ -37,3 +51,4 @@ const productToCard=name=>{
     const cardStrigifid=JSON.stringify(card)
     localStorage.setItem('card',cardStrigifid)
 }
+displayCardLocalStorag()
