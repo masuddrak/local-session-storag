@@ -46,9 +46,18 @@ const getCard=()=>{
 
 // add prpduct ot card
 const productToCard=name=>{
-    const card=getCard()
+    let card=getCard()
+    if(card[name]){
+        card[name]=card[name]+1
+    }
+    else{
     card[name]=1
+    }
     const cardStrigifid=JSON.stringify(card)
     localStorage.setItem('card',cardStrigifid)
+}
+const pleceOrdder=()=>{
+    document.getElementById('addIteam').textContent=''
+    localStorage.removeItem('card')
 }
 displayCardLocalStorag()
